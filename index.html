@@ -5,14 +5,15 @@
   <title>filterable gallery</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lacquer&display=swap" rel="stylesheet">
   <style media="screen">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lacquer&display=swap" rel="stylesheet">
 
 body{
   line-height: 1.5;
-    background-color: azure;   
+    background-color: azure;
 }
 *{
     padding: 0;
@@ -40,13 +41,14 @@ img{
           height: 100%;
          position: absolute;
         font-family: 'Lacquer', serif;
+        font-size: 1vh;
       }
-      
+
       .caption:hover {
           opacity: 1;
            font-family: 'Lacquer', serif;
       }
-      
+
 /*.gallery*/
 .gallery{
   width: 100vw;
@@ -82,6 +84,7 @@ img{
 .gallery .gallery-item{
   width: calc(100% / 4);
   padding: 1vw;
+  background-color: white;
 
 }
       #aboutUs {
@@ -93,7 +96,7 @@ img{
           border-radius: 50%
               text-align: center;
       }
-      
+
       .gallery-item:hover {
           border: 2px red solid;
           border-radius: 20px;
@@ -137,7 +140,7 @@ img{
           margin-top: 1vh;
           text-align: center;
       }
-      
+
       h2 {
           text-align: center;
           font-size: 7vh;
@@ -192,7 +195,7 @@ img{
  });
 </script>
     <script>
-        
+
         var appDiv = document.getElementById('thumbnails');
 
 var data = [
@@ -550,24 +553,7 @@ var data = [
     Week: 36,
     Image: 59,
   },
-  {
-    BuildingName: 'Modules & Repetition',
-    Block: 'Architecture Review',
-    Week: 35,
-    Image: 0,
-  },
-  {
-    BuildingName: 'Mass & Density',
-    Block: 'Architecture Review',
-    Week: 37,
-    Image: 0,
-  },
-  {
-    BuildingName: 'Symmetry',
-    Block: 'Architecture Review',
-    Week: 38,
-    Image: 0,
-  },
+
   {
     BuildingName: 'Modular Arboretum',
     Block: 'Architecture Review',
@@ -605,12 +591,6 @@ var data = [
     Image: 64,
   },
   {
-    BuildingName: 'Antigravity Gardens',
-    Block: 'South River Gardens',
-    Week: 53,
-    Image: 0,
-  },
-  {
     BuildingName: 'Tokyo Imperial Palace',
     Block: 'South River District',
     Week: 54,
@@ -645,7 +625,7 @@ var data = [
     BuildingName: 'CTA Transit Hub',
     Block: 'City West',
     Week: 60,
-    Image: 0,
+    Image: 83,
   },
 
   {
@@ -696,24 +676,24 @@ var data = [
 var count = Object.keys(data).length;
 
 function city() {
-   
+
   // browser code
-    for (var i = 1; i < count; i++) {
-        var image = data[i - 1].Image;
-        var inst = data[i - 1].Week;
-        var block = data[i-1].Block;
+    for (var i = 0; i < count; i++) {
+        var image = data[i].Image;
+        var inst = data[i].Week;
+        var block = data[i].Block;
         var blocky = block.replace(/\s/g, '');
 
         var container = document.createElement('div');
         var clazz = document.createAttribute('class');
         clazz.value = 'gallery-item ' + blocky;
         container.setAttributeNode(clazz);
-    
+
         var inner = document.createElement('div');
         inz = document.createAttribute('class');
         inz.value = 'gallery-item-inner';
         inner.setAttributeNode(inz);
-    
+
         var imgs = document.createElement('img');
         var srcs = document.createAttribute('src');
         imgs.setAttributeNode(srcs);
@@ -721,18 +701,18 @@ function city() {
       'https://raw.githubusercontent.com/MrLordBrown/bcbc/main/s (' +
       image +
       ').png';
-        
+
         var caption = document.createElement('div');
         var hidez = document.createAttribute('class');
         hidez.value = 'caption';
         caption.setAttributeNode(hidez);
-        caption.innerHTML = data[i - 1].BuildingName;
-        
+        caption.innerHTML = data[i].BuildingName;
+
         inner.appendChild(caption);
         inner.appendChild(imgs);
         container.appendChild(inner);
         appDiv.appendChild(container);
-        
+
     }
 }
         city();
